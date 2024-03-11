@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>아이디 찾기</title>
+    <link rel="stylesheet" href="../global.css" />
+    <link rel="stylesheet" href="../style/findIdPassword.css" />
+  </head>
+  <body>
+    <h1>id찾기</h1>
+    <h3>id를 찾으려면 다음 정보를 정확하게 입력해주세요</h3>
+    <form id="findIdForm">
+      <div>
+        <label>이름</label>
+        <input type="text" maxlength="20" name="nameInput" id="nameInput" />
+      </div>
+      <div>
+        <label>이메일</label>
+        <input type="email" maxlength="20" name="emailInput" id="emailInput" />
+      </div>
+      <div class="blueBtn" id="findIdBtn" onclick="findId()">id찾기</div>
+    </form>
+    <script src="../js/findIdPassword.js"></script>
+  </body>
+</html>

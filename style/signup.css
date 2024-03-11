@@ -1,0 +1,61 @@
+#signupLogo {
+  margin-top: 84px;
+  font-size: 64px;
+  font-size: 64px;
+  margin-block-end: 0;
+}
+
+#signupForm {
+  width: 632px;
+  margin: 20px auto 0 auto;
+  font-size: 20px;
+}
+
+.normalForm input {
+  width: 438px;
+  height: 47px;
+  padding-block: 0;
+  padding-inline: 0;
+  box-sizing: border-box;
+  padding-left: 19px;
+  font-size: 24px;
+}
+
+.normalForm label {
+  margin: 9px 0;
+  height: 24px;
+}
+
+.flexDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+.selectOption input {
+  width: 20px;
+  height: 20px;
+  margin-left: 41px;
+  margin-bottom: 21px;
+  margin-top: 9px;
+}
+
+.selectOption label {
+  display: inline;
+}
+
+#checkIdBtn,
+#checkEmailBtn {
+  width: 173px;
+  height: 47px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#signupBtn {
+  height: 71px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

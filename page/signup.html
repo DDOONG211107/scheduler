@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../global.css" />
+    <link rel="stylesheet" href="../style/signup.css" />
+  </head>
+  <body>
+    <h1 id="signupLogo">회원가입</h1>
+    <form id="signupForm">
+      <div class="normalForm">
+        <label>id</label>
+        <div class="flexDiv">
+          <input type="text" maxlength="20" id="idInput" name="idInput" />
+          <div
+            class="blueBtn"
+            id="checkIdBtn"
+            value="id"
+            onclick="checkSameValue(event, 1)"
+          >
+            id 중복확인
+          </div>
+        </div>
+        <span class="blockSpan">id는 최대 20자까지 입력할 수 있습니다</span>
+      </div>
+      <div class="normalForm">
+        <label>이름</label>
+        <input type="text" maxlength="10" id="nameInput" name="nameInput" />
+      </div>
+      <div class="normalForm">
+        <label>이메일</label>
+        <div class="flexDiv">
+          <input
+            type="email"
+            maxlength="20"
+            id="emailInput"
+            name="emailInput"
+          />
+          <div
+            class="blueBtn"
+            id="checkEmailBtn"
+            value="email"
+            onclick="checkSameValue(event, 2)"
+          >
+            이메일 중복확인
+          </div>
+        </div>
+      </div>
+      <div class="normalForm">
+        <label>비밀번호</label>
+        <input
+          type="password"
+          maxlength="20"
+          id="passwordInput"
+          name="passwordInput"
+        />
+        <span class="blockSpan"
+          >비밀번호는 최대 20자까지 입력할 수 있습니다
+        </span>
+      </div>
+      <div class="normalForm">
+        <label>비밀번호 확인</label>
+        <input
+          type="password"
+          maxlength="20"
+          id="passwordCheckInput"
+          name="passwordCheckInput"
+        />
+      </div>
+      <div class="selectOption">
+        부서
+        <input type="radio" id="team1" name="teamSelect" value="team1" />
+        <label for="team1">기획팀</label>
+        <input type="radio" id="team2" name="teamSelect" value="team2" />
+        <label for="team2">디자인팀</label>
+      </div>
+      <div class="selectOption">
+        직급
+        <input type="radio" id="rank1" name="rankSelect" value="rank1" />
+        <label for="rank1">팀장</label>
+        <input type="radio" id="rank2" name="rankSelect" value="rank2" />
+        <label for="rank2">팀원</label>
+      </div>
+      <div class="blueBtn" id="signupBtn" onclick="signup()">회원가입</div>
+    </form>
+    <script src="../js/signup.js"></script>
+  </body>
+</html>

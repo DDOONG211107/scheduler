@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./style/index.css" />
+    <title>솔가레오</title>
+  </head>
+  <body>
+    <h1 id="loginLogo">솔가레오</h1>
+    <form id="loginForm">
+      <div>
+        <label>id</label>
+        <input type="text" maxlength="20" name="idInput" id="idInput" />
+      </div>
+      <div>
+        <label>비밀번호</label>
+        <input
+          type="password"
+          maxlength="20"
+          name="passwordInput"
+          id="passwordInput"
+        />
+      </div>
+      <div class="blueBtn" id="loginBtn" onclick="loginEvent()">로그인</div>
+      <div class="greyBtn" id="signupBtn" onclick="signupEvent()">회원가입</div>
+      <div id="findIdPassword">
+        <span onclick="findIdEvent()">id찾기</span>
+        <span onclick="findPasswordEvent()">비밀번호 찾기</span>
+      </div>
+    </form>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
