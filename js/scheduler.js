@@ -1,4 +1,3 @@
-import { scheduleDataArr, scheduleDetailDataArr } from "./data.js";
 let yearValue = 0;
 let monthValue = 0;
 let dateValue = 0;
@@ -11,8 +10,11 @@ let myName = "최민석";
 let myRank = "rank1";
 
 const dateNumArr = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
 const createScheduleModal = document.getElementById("createScheduleModal");
 const scheduleDetailModal = document.getElementById("scheduleDetailModal");
+
+// 맨 처음 오늘 날짜를 불러온다.
 function getCurrentDate() {
   const currentDateObj = new Date();
   yearValue = currentDateObj.getFullYear();
@@ -24,7 +26,7 @@ function getCurrentDate() {
   currentDate = dateValue;
 
   // const current = { year, month, date };
-  document.getElementById("year").innerText = yearValue;
+  // document.getElementById("year").innerText = yearValue;
   // document.getElementById("calander").innerText = date;
 }
 
@@ -89,7 +91,6 @@ function createDateBtns() {
 
 // 일마다 스케줄 개수 넣어주기
 function setScheduleNumOnDate() {
-  // alert("스케줄을 넣어주겠습니다");
   const scheduleArr = scheduleDataArr;
   for (let i = 0; i < scheduleArr.length; i++) {
     if (scheduleArr[i].year === yearValue) {
@@ -102,8 +103,6 @@ function setScheduleNumOnDate() {
 
         const date = scheduleArr[i].date; // 스케줄의 날짜 (ex.4일이면 4)
         const calander = document.getElementById("calander");
-        // console.log(date - 1);
-        // console.log(calander.children[date - 1]);
         calander.children[date - 1].appendChild(scheduleNumElem);
       }
     }
@@ -332,9 +331,9 @@ window.writeScheduleEvent = function (event) {
 
 window.scheduleDetailEvent = function (event, year, month, date) {
   scheduleDetailModal.style.display = "block";
-  document.getElementById(
-    "clickedDate"
-  ).innerText = `${year}년 ${month}월 ${date}일`;
+  document.getElementById("clickedDate").innerText = `${year}년 ${
+    month + 1
+  }월 ${date}일`;
 
   // 이 날짜에 해당하는 스케줄을 싹 지워야 함
   const scheduleUl = document.getElementById("scheduleList");

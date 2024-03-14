@@ -8,7 +8,7 @@
 #signupForm {
   width: 632px;
   margin: 20px auto 0 auto;
-  font-size: 20px;
+  font-size: var(--font-size1);
 }
 
 .normalForm input {
@@ -18,7 +18,7 @@
   padding-inline: 0;
   box-sizing: border-box;
   padding-left: 19px;
-  font-size: 24px;
+  font-size: var(--font-size2);
 }
 
 .normalForm label {

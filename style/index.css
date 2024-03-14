@@ -15,19 +15,20 @@
   height: 58px;
   margin: 16px auto;
   padding-left: 19px;
-  font-size: 24px;
+  font-size: var(--font-size2);
+
   box-sizing: border-box;
 }
 
 #loginForm label {
-  font-size: 32px;
+  font-size: var(--font-size4);
 }
 
 #loginBtn,
 #signupBtn {
   height: 62px;
   text-align: center;
-  font-size: 32px;
+  font-size: var(--font-size4);
   margin-bottom: 16px;
   display: flex;
   align-items: center;
@@ -38,7 +39,7 @@
   margin-top: 28px;
   display: flex;
   justify-content: space-between;
-  font-size: 24px;
+  font-size: var(--font-size2);
 }
 
 #findIdPassword span {

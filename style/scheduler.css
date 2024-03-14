@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #d9d9d9;
+  background-color: var(--normal-grey);
   cursor: pointer;
   font-size: 48px;
 }
@@ -46,7 +46,7 @@
   padding: 0 15px;
   height: 60px;
   font-size: 40px;
-  background-color: #4b88ff;
+  background-color: var(--normal-blue);
   color: white;
   display: flex;
   align-items: center;
@@ -79,7 +79,7 @@
   border: 1px solid black;
   padding-left: 14px;
   padding-top: 17px;
-  font-size: 24px;
+  font-size: var(--font-size2);
   cursor: pointer;
 }
 
@@ -88,11 +88,11 @@
 }
 
 .scheduleNum {
-  color: #4b88ff;
+  color: var(--normal-blue);
 }
 
 .modal {
-  display: none;
+  display: block;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -104,14 +104,14 @@
 }
 
 .modalContent {
-  background-color: #bdd4ff;
-  position: fixed;
-  top: 60px;
-  margin-left: 15%;
+  background-color: var(--light-blue);
+  /* position: fixed; */
+  /* top: 250px; */
+  /* margin-left: 20%; */
   padding: 35px;
-  border: 2px solid black;
-  width: 70%;
-  height: 500px;
+  /* border: 2px solid black; */
+  /* width: 60%; */
+  /* height: 560px; */
 }
 
 #scheduleFormTimeInput,
@@ -123,7 +123,7 @@
 .scheduleFormInput {
   width: 100px;
   height: 60px;
-  font-size: 32px;
+  font-size: var(--font-size4);
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -134,13 +134,13 @@
 
 .scheduleFormSpan {
   margin-left: 10px;
-  font-size: 24px;
+  font-size: var(--font-size2);
   margin-right: 30px;
 }
 
 #scheduleFormContentInput {
   margin-top: 41px;
-  font-size: 24px;
+  font-size: var(--font-size2);
 }
 
 #scheduleFormContentInput input {
@@ -149,7 +149,7 @@
   height: 230px;
   box-sizing: border-box;
   margin-top: 10px;
-  font-size: 32px;
+  font-size: var(--font-size4);
 }
 
 #scheduleFormBtnSection {
@@ -166,11 +166,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: var(--font-size2);
 }
 
 #scheduleDetailModalContent {
-  font-size: 32px;
+  font-size: var(--font-size4);
   margin-bottom: 20px;
 }
 
@@ -189,7 +189,7 @@
 }
 
 .schedule {
-  font-size: 24px;
+  font-size: var(--font-size2);
   margin-bottom: 20px;
   background-color: white;
   display: flex;
@@ -200,7 +200,7 @@
 }
 
 .formOpenSchedule {
-  font-size: 24px;
+  font-size: var(--font-size2);
   margin-bottom: 20px;
   background-color: white;
   display: flex;
