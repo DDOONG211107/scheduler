@@ -16,7 +16,9 @@ String dateValue = request.getParameter("date");
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../global.css" />
-    <link rel="stylesheet" href="../style/scheduler.css" />
+    <%-- <link rel="stylesheet" href="../style/scheduler.css" /> --%>
+    <link rel="stylesheet" href="../style/scheduler.css?randomString" />
+
     <title>솔가레오</title>
   </head>
   <body>
@@ -40,19 +42,19 @@ String dateValue = request.getParameter("date");
         <div class="modalContent">
           <form id="createScheduleForm">
             <div id="scheduleFormTimeInput">
-              <input type="number" maxlength="4" class="scheduleFormInput" />
+              <input type="number" maxlength="4" class="scheduleFormInput" name="newYear" />
               <span class="scheduleFormSpan">년</span>
 
-              <input type="number" maxlength="2" class="scheduleFormInput" />
+              <input type="number" maxlength="2" class="scheduleFormInput" name="newMonth" />
               <span class="scheduleFormSpan">월</span>
 
-              <input type="number" maxlength="2" class="scheduleFormInput" />
+              <input type="number" maxlength="2" class="scheduleFormInput" name="newDate" />
               <span class="scheduleFormSpan">일</span>
 
-              <input type="number" maxlength="2" class="scheduleFormInput" />
+              <input type="number" maxlength="2" class="scheduleFormInput" name="newHour" />
               <span class="scheduleFormSpan">시</span>
 
-              <input type="number" maxlength="2" class="scheduleFormInput" />
+              <input type="number" maxlength="2" class="scheduleFormInput" name="newMinute" />
               <span class="scheduleFormSpan">분</span>
             </div>
             <div id="scheduleFormContentInput">
@@ -60,8 +62,13 @@ String dateValue = request.getParameter("date");
               <input
                 type="text"
                 placeholder="1자이상 20자 이하로 입력해 주세요."
+                name="newContent"
               />
             </div>
+            <input class="notDisplay" name="descYear" id="descYear">
+            <input class="notDisplay" name="descMonth" id="descMonth">
+            <input class="notDisplay" name="descDate" id="descDate">
+
             <div id="scheduleFormBtnSection">
               <div
                 class="greyBtn"
@@ -94,34 +101,34 @@ String dateValue = request.getParameter("date");
 
     <script>
         const scheduleNumArr = [
-        [0],
-        [0,2,0,0,0,
-         0,0,0,0,0,
-         0,1,0,0,0,
-         0,0,0,0,4,
-         0,0,0,0,0,
-         1,2,3],
-        [0,0,0,0,0,
-         0,0,0,3,0,
-         0,0,0,0,0,
-         0,0,5,0,4,
-         0,0,0,0,0,
-         0,0,0,0,0,
-         2],
-        [0,0,0,5,0,
-         0,0,0,0,0,
-         0,14,0,0,0,
-         0,0,6,0,4,
-         0,0,0,0,0,
-         0,0,7,0,0],
-        [0],
-        [0],
-        [0],
-        [0],
-        [0],
-        [0],
-        [0],
-        [0],
+            [0],
+            [0,2,0,0,0,
+            0,0,0,0,0,
+            0,1,0,0,0,
+            0,0,0,0,4,
+            0,0,0,0,0,
+            1,2,3],
+            [0,0,0,0,0,
+            0,0,0,3,0,
+            0,0,0,0,0,
+            0,0,5,0,4,
+            0,0,0,0,0,
+            0,0,0,0,0,
+            2],
+            [0,0,0,5,0,
+            0,0,0,0,0,
+            0,14,0,0,0,
+            0,0,6,0,4,
+            0,0,0,0,0,
+            0,0,7,0,0],
+            [0],
+            [0],
+            [0],
+            [0],
+            [0],
+            [0],
+            [0],
+            [0],
         ]
 
         const dateNumArr = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -204,7 +211,7 @@ String dateValue = request.getParameter("date");
             }
         }
         function mypageEvent(event) {
-            alert('현재 준비중인 기능입니다.');
+            window.location.href = "./mypage.jsp?year="+yearValue+"&month="+monthValue+"&date="+dateValue;
         }
             
         function changeMonthEvent(event) {
@@ -221,7 +228,7 @@ String dateValue = request.getParameter("date");
         }
 
         function changeYearEvent(event,num) {
-            const changedYear = yearValue +num;
+            const changedYear = (+yearValue) + (+num);
 
             document.getElementById('yearInput').value = changedYear;
             document.getElementById('monthInput').value = monthValue;
@@ -231,12 +238,16 @@ String dateValue = request.getParameter("date");
             document.getElementById('yearMonthForm').submit();
         }
 
-        function scheduleDetailEvent(event, clickedDate) {
+        function saveScheduleEvent(event) {
+            document.getElementById('descYear').value = yearValue;
+            document.getElementById('descMonth').value = monthValue;
+            document.getElementById('descDate').value = dateValue;
 
-            // document.getElementById('yearInput').value = yearValue;
-            // document.getElementById('monthInput').value = monthValue;
-            // document.getElementById('dateInput').value = dateValue;
-            // const clickedDate = 
+            document.getElementById('createScheduleForm').action = "./createScheduleForm.jsp";
+            document.getElementById('createScheduleForm').submit();
+        }
+
+        function scheduleDetailEvent(event, clickedDate) {
 
             const detailUrl = `./scheduleDetail.jsp?year=` + yearValue + `&month=` + monthValue + `&date=` + clickedDate;
 

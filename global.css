@@ -76,6 +76,10 @@ form label {
   display: block;
 }
 
+.boldSpan {
+  font-weight: bold;
+}
+
 .notDisplay {
   display: none;
 }

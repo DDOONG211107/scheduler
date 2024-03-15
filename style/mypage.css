@@ -1,0 +1,42 @@
+#mypage {
+  width: 500px;
+  height: 540px;
+  /* background-color: aqua; */
+  margin: 0 auto;
+  display: block;
+  font-size: var(--font-size2);
+}
+
+#mypageContent {
+  height: 320px;
+  /* background-color: lightblue; */
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+#mypageContentLabel {
+  text-align: end;
+  width: 50%;
+  margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#mypageContentData {
+  width: 50%;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#editProfileBtn,
+#deleteAccountBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  margin-top: 40px;
+}
