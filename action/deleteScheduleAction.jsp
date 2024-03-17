@@ -19,7 +19,7 @@
     const alertString = "스케줄 idx가 전달되어 "+idx+"번 스케줄이 삭제되었다고 가정. ";
 
     alert(alertString);
-    window.close();
-    window.location.href = "./scheduler.jsp?year="+year+"&month="+month+"&date="+date;
+    // window.close();
+    window.location.href = "./scheduleDetail.jsp?year="+year+"&month="+month+"&date="+date;
 
 </script>

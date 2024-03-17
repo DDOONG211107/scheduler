@@ -7,6 +7,10 @@
   font-size: var(--font-size2);
 }
 
+#mypageTitle {
+  margin: 60px;
+}
+
 #mypageContent {
   height: 320px;
   /* background-color: lightblue; */

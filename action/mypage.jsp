@@ -22,7 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../global.css" />
     <link rel="stylesheet" href="../style/scheduler.css" />
-    <link rel="stylesheet" href = "../style/mypage.css?random" />
+    <link rel="stylesheet" href = "../style/mypage.css?randomCss" />
     <title>솔가레오</title>
   </head>
   <body>
@@ -33,9 +33,9 @@
       </div>
     </header>
     <main>
-        <div>
-            <h1>마이페이지</h1>
-        </div>
+        
+        <h1 id="mypageTitle">마이페이지</h1>
+        
         <form id="mypage">
             <div id="mypageContent">
                 <div id="mypageContentLabel">
@@ -92,7 +92,7 @@
         }
 
         function editProfileEvent(event) {
-            alert('정보 수정');
+            window.location.href = "./editMypage.jsp?year="+yearValue+"&month="+monthValue+"&date="+dateValue;
             return;
         }
 
