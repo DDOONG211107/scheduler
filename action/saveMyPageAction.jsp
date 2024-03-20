@@ -107,7 +107,7 @@
         window.history.back();
     }else if(save){
         alert('저장되었습니다');
-        window.location.href = "./mypage.jsp?year="+yearValue+"&month="+monthValue+"&date="+dateValue;
+        window.location.href = "../page/mypage.jsp?year="+yearValue+"&month="+monthValue+"&date="+dateValue;
     }else {
         alert("서버: 데이터베이스에 문제가 생겼습니다. 다시 시도해주세요.");
         window.history.back();

@@ -146,7 +146,7 @@
                 return;
             }
             document.getElementById("signupForm").action =
-                "./checkSameIdAction.jsp?id="+idValue+"&email="+email+"&checkId="+checkId+"&checkEmail"+checkEmail;
+                "../action/checkSameIdAction.jsp?id="+idValue+"&email="+email+"&checkId="+checkId+"&checkEmail"+checkEmail;
             document.getElementById("signupForm").submit();
         }
 
@@ -161,7 +161,7 @@
                 return;
             }
             document.getElementById("signupForm").action =
-                "./checkSameEmailAction.jsp?id="+id+"&email="+emailValue+"&checkId="+checkId+"&checkEmail"+checkEmail;
+                "../action/checkSameEmailAction.jsp?id="+id+"&email="+emailValue+"&checkId="+checkId+"&checkEmail"+checkEmail;
             document.getElementById("signupForm").submit();
         }
 
@@ -209,7 +209,7 @@
                   }
 
                   // alert(id+" "+email+" "+nameValue+" "+ team.value+"로 회원가입 하기");
-                  document.getElementById('signupForm').action = "./signupAction.jsp";
+                  document.getElementById('signupForm').action = "../action/signupAction.jsp";
                   document.getElementById('signupForm').submit();
                   
                 }catch(e){

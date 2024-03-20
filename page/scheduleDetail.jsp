@@ -252,7 +252,7 @@
             const deleteOkay = confirm(scheduleContent + "를 삭제하시겠습니까?");
 
             if(deleteOkay){
-                window.location.href = "./deleteScheduleAction.jsp?year="+year+"&month="+month+"&date="+date+"&idx="+idx;
+                window.location.href = "../action/deleteScheduleAction.jsp?year="+year+"&month="+month+"&date="+date+"&idx="+idx;
             }
 
             return;
@@ -293,7 +293,7 @@
                 return;
             }
 
-            window.location.href = "./saveScheduleAction.jsp?year="+year+"&month="+month+"&date="+date+"&idx="+idx+"&year="+year+"&month="+month+"&date="+date+"&hour="+hour+"&minute="+minute+"&content="+content;
+            window.location.href = "../action/saveScheduleAction.jsp?year="+year+"&month="+month+"&date="+date+"&idx="+idx+"&year="+year+"&month="+month+"&date="+date+"&hour="+hour+"&minute="+minute+"&content="+content;
             return;
         }
 

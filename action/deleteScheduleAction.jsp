@@ -28,6 +28,6 @@
 
     alert(alertString);
     // window.close();
-    window.location.href = "./scheduleDetail.jsp?year="+year+"&month="+month+"&date="+date;
+    window.location.href = "../page/scheduleDetail.jsp?year="+year+"&month="+month+"&date="+date;
 
 </script>

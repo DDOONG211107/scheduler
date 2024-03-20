@@ -56,7 +56,7 @@
       int currentYear = today.getYear();
       int currentMonth = today.getMonthValue();
       int currentDate = today.getDayOfMonth();
-      response.sendRedirect("scheduler.jsp?year="+currentYear+"&month="+currentMonth+"&date="+currentDate); 
+      response.sendRedirect("../page/scheduler.jsp?year="+currentYear+"&month="+currentMonth+"&date="+currentDate); 
   
     } catch(Exception e){
       alertString = e.getMessage();

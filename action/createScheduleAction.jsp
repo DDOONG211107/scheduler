@@ -40,6 +40,6 @@
     // alert(alertString);
     // const s = descYear + descMonth +descDate;
     alert(alertString);
-    window.location.href = "./scheduler.jsp?year="+descYear+"&month="+descMonth+"&date="+descDate;
+    window.location.href = "../page/scheduler.jsp?year="+descYear+"&month="+descMonth+"&date="+descDate;
 
 </script>

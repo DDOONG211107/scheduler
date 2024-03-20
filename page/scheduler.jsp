@@ -309,7 +309,7 @@
                 document.getElementById('descMonth').value = monthValue;
                 document.getElementById('descDate').value = dateValue;
 
-                document.getElementById('createScheduleForm').action = "./createScheduleAction.jsp";
+                document.getElementById('createScheduleForm').action = "../action/createScheduleAction.jsp";
                 document.getElementById('createScheduleForm').submit();
 
             }catch(e){
@@ -324,7 +324,7 @@
         }
 
         function logoutEvent() {
-            window.location.href = "./logoutAction.jsp";
+            window.location.href = "../action/logoutAction.jsp";
         }
             
         createMonthBtns();

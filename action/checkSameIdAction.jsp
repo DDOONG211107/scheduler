@@ -63,17 +63,17 @@
   
   if(isError){
     alert(alertString);
-    window.location.href = "signup.jsp?id="+id+"&email="+email+"&checkId=false&checkEmail="+checkEmail;
+    window.location.href = "../page/signup.jsp?id="+id+"&email="+email+"&checkId=false&checkEmail="+checkEmail;
   }else{
 
     if(isSame){
         alert(alertString);
         // window.history.back();
-        window.location.href = "signup.jsp?id="+id+"&email="+email+"&checkId=false&checkEmail="+checkEmail;
+        window.location.href = "../page/signup.jsp?id="+id+"&email="+email+"&checkId=false&checkEmail="+checkEmail;
     } else {
         alert('해당 아이디는 사용할 수 있습니다.');
         // window.history.back();
-        window.location.href = "signup.jsp?id="+id+"&email="+email+"&checkId=true&checkEmail="+checkEmail;
+        window.location.href = "../page/signup.jsp?id="+id+"&email="+email+"&checkId=true&checkEmail="+checkEmail;
     }
   }
   

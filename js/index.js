@@ -23,7 +23,7 @@ function loginEvent() {
 }
 
 function signupEvent() {
-  document.getElementById("loginForm").action = "/scheduler/action/signup.jsp";
+  document.getElementById("loginForm").action = "/scheduler/page/signup.jsp";
   document.getElementById("loginForm").submit();
 }
 

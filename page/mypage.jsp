@@ -140,7 +140,7 @@
         }
 
         function deleteAccountEvent(event){
-            window.location.href = "./deleteAccountAction.jsp";
+            window.location.href = "../action/deleteAccountAction.jsp";
         }
 
         setMypageContentData();

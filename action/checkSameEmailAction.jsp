@@ -85,7 +85,7 @@
      if(isEdit){
          window.history.back();
      }else{
-         window.location.href = "signup.jsp?id="+id+"&email="+email+"&checkId="+checkId+"&checkEmail=false";
+         window.location.href = "../page/signup.jsp?id="+id+"&email="+email+"&checkId="+checkId+"&checkEmail=false";
      }
 
    }else{
@@ -99,19 +99,19 @@
          } else {    
          alert('해당 이메일은 사용할 수 있습니다.');
          // window.history.back();
-         window.location.href = "editMypage.jsp?newEmail="+email+"&checkEmail=true&year="+year+"&month="+month+"&date="+date;
+         window.location.href = "../page/editMypage.jsp?newEmail="+email+"&checkEmail=true&year="+year+"&month="+month+"&date="+date;
          }
      }
      else {
          if(isSame){
          alert(`해당 이메일은 사용할 수 없습니다.`);
         //  window.history.back();
-         window.location.href = "signup.jsp?id="+id+"&email="+email+"&checkId="+checkId+"&checkEmail=false";
+         window.location.href = "../page/signup.jsp?id="+id+"&email="+email+"&checkId="+checkId+"&checkEmail=false";
         
          } else {    
          alert('해당 이메일은 사용할 수 있습니다.');
          // window.history.back();
-         window.location.href = "signup.jsp?id="+id+"&email="+email+"&checkId="+checkId+"&checkEmail=true";
+         window.location.href = "../page/signup.jsp?id="+id+"&email="+email+"&checkId="+checkId+"&checkEmail=true";
          }
      }
    }

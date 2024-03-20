@@ -218,7 +218,7 @@
                 return;
             }
             document.getElementById("editForm").action =
-                "./checkSameEmailAction.jsp?email="+emailValue+"&isEdit=true";
+                "../action/checkSameEmailAction.jsp?email="+emailValue+"&isEdit=true";
             document.getElementById("editForm").submit();
         }
 
@@ -268,7 +268,7 @@
                     }
 
                     // alert(id+" "+email+" "+nameValue+" "+ team.value+"로 회원가입 하기");
-                    document.getElementById('editForm').action = "./saveMyPageAction.jsp?";
+                    document.getElementById('editForm').action = "../action/saveMyPageAction.jsp?";
                     document.getElementById('editForm').submit();
                   
                 } catch(e){
