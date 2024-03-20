@@ -3,24 +3,49 @@ function findIdEvent() {
   const nameValue = document.getElementById("nameInput").value;
   const emailValue = document.getElementById("emailInput").value;
 
-  if (!nameValue || !emailValue) {
-    alert("이름과 이메일을 모두 올바르게 입력해주세요");
+  const nameRegex = /^[a-zA-Z가-힣]{1,10}$/;
+  const emailRegex =
+    /^([a-zA-Z0-9]*[-_.]*[a-zA-Z0-9]*@[a-zA-Z0-9]*.[a-zA-Z0-9]*){1,20}$/;
+
+  try {
+    if (!nameRegex.test(nameValue)) {
+      throw "이름은 올바른 형식으로 1자 이상 10자 이하로 입력해주세요.";
+    }
+
+    if (!emailRegex.test(emailValue)) {
+      throw "이메일은 올바른 형식으로 1자 이상 20자 이하로 입력해주세요.";
+    }
+
+    document.getElementById("findIdForm").action = "../action/findIdAction.jsp";
+    document.getElementById("findIdForm").submit();
+  } catch (e) {
+    alert(e);
     return;
   }
-  document.getElementById("findIdForm").action = "../action/findIdAction.jsp";
-  document.getElementById("findIdForm").submit();
 }
 
 function findPasswordEvent() {
   const idValue = document.getElementById("idInput").value;
   const emailValue = document.getElementById("emailInput").value;
 
-  if (!idValue || !emailValue) {
-    alert("아이디와 이메일을 모두 올바르게 입력해주세요");
+  const idRegex = /^[a-zA-Z0-9]{1,20}$/;
+  const emailRegex =
+    /^([a-zA-Z0-9]*[-_.]*[a-zA-Z0-9]*@[a-zA-Z0-9]*.[a-zA-Z0-9]*){1,20}$/;
+
+  try {
+    if (!idRegex.test(idValue)) {
+      throw "아이디는 올바른 형식으로 1자 이상 20자 이하로 입력해주세요";
+    }
+
+    if (!emailRegex.test(emailValue)) {
+      throw "이메일은 올바른 형식으로 1자 이상 20자 이하로 입력해주세요.";
+    }
+
+    document.getElementById("findPasswordForm").action =
+      "../action/findPasswordAction.jsp";
+    document.getElementById("findPasswordForm").submit();
+  } catch (e) {
+    alert(e);
     return;
   }
-
-  document.getElementById("findPasswordForm").action =
-    "../action/findPasswordAction.jsp";
-  document.getElementById("findPasswordForm").submit();
 }

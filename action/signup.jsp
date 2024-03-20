@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html" pageEncoding="utf-8" %> 
 <% 
-request.setCharacterEncoding("utf-8"); 
+    request.setCharacterEncoding("utf-8"); 
 
-String id = "\""+ request.getParameter("id") +"\"";
-String email = "\"" + request.getParameter("email")+"\"";
-String checkId = "\"" +request.getParameter("checkId")+"\"" ;
-String checkEmail ="\"" + request.getParameter("checkEmail")+"\"" ;
+    String id = "\""+ request.getParameter("id") +"\"";
+    String email = "\"" + request.getParameter("email")+"\"";
+    String checkId = "\"" +request.getParameter("checkId")+"\"" ;
+    String checkEmail ="\"" + request.getParameter("checkEmail")+"\"" ;
 %>
 
 <!DOCTYPE html>
@@ -25,7 +25,9 @@ String checkEmail ="\"" + request.getParameter("checkEmail")+"\"" ;
   </head>
   <body>
     <h1 id="signupLogo">회원가입</h1>
+
     <form id="signupForm" method="post">
+
       <div class="normalForm">
         <label>id</label>
         <div class="flexDiv">
@@ -34,13 +36,13 @@ String checkEmail ="\"" + request.getParameter("checkEmail")+"\"" ;
             class="blueBtn"
             id="checkIdBtn"
             value="id"
-            onclick="checkSameIdEvent(event)"
-          >
+            onclick="checkSameIdEvent(event)">
             id 중복확인
           </div>
         </div>
         <span class="blockSpan">id는 최대 20자까지 입력할 수 있습니다</span>
       </div>
+
       <div class="normalForm">
         <label>이메일</label>
         <div class="flexDiv">
@@ -60,6 +62,7 @@ String checkEmail ="\"" + request.getParameter("checkEmail")+"\"" ;
           </div>
         </div>
       </div>
+
       <div class="normalForm">
         <label>이름</label>
         <input type="text" maxlength="10" id="nameInput" name="nameInput" />
@@ -77,6 +80,7 @@ String checkEmail ="\"" + request.getParameter("checkEmail")+"\"" ;
           >비밀번호는 최대 20자까지 입력할 수 있습니다
         </span>
       </div>
+
       <div class="normalForm">
         <label>비밀번호 확인</label>
         <input
@@ -86,21 +90,25 @@ String checkEmail ="\"" + request.getParameter("checkEmail")+"\"" ;
           name="passwordCheckInput"
         />
       </div>
+
       <div class="selectOption">
         부서
-        <input type="radio" id="team1" name="teamSelect" value="team1" />
+        <input type="radio" id="team1" name="teamSelect" value="기획팀" />
         <label for="team1">기획팀</label>
-        <input type="radio" id="team2" name="teamSelect" value="team2" />
+        <input type="radio" id="team2" name="teamSelect" value="디자인팀" />
         <label for="team2">디자인팀</label>
       </div>
+
       <div class="selectOption">
         직급
-        <input type="radio" id="rank1" name="rankSelect" value="rank1" />
+        <input type="radio" id="rank1" name="rankSelect" value="팀장" />
         <label for="rank1">팀장</label>
-        <input type="radio" id="rank2" name="rankSelect" value="rank2" />
+        <input type="radio" id="rank2" name="rankSelect" value="팀원" />
         <label for="rank2">팀원</label>
       </div>
+
       <div class="blueBtn" id="signupBtn" onclick="signupEvent()">회원가입</div>
+
       <input class="notDisplay" name="checkId" id="checkId"/>
       <input class="notDisplay" name="checkEmail" id="checkEmail"/>
     </form>
@@ -114,13 +122,13 @@ String checkEmail ="\"" + request.getParameter("checkEmail")+"\"" ;
         document.getElementById('checkId').value = checkId;
         document.getElementById('checkEmail').value = checkEmail;
 
-        if(checkId && checkId!= "null") {
+        if(checkId && checkId!= "null" && checkId!= "false") {
             document.getElementById('idInput').setAttribute('readonly','true');
             document.getElementById('idInput').value = id;
             document.getElementById('checkIdBtn').style.display = 'none';
         }
 
-        if(checkEmail && checkEmail != "null") {
+        if(checkEmail && checkEmail != "null" && checkEmail!= "false") {
             document.getElementById('emailInput').setAttribute('readonly','true');
             document.getElementById('emailInput').value = email;
             document.getElementById('checkEmailBtn').style.display = 'none';
@@ -156,8 +164,7 @@ String checkEmail ="\"" + request.getParameter("checkEmail")+"\"" ;
         }
 
         function signupEvent(){
-          if(checkId == "true" && checkEmail=="true")
-          {
+          if(checkId == "true" && checkEmail=="true"){
                 // 이름 정규식 체크하고 안되면 알림 띄우기
                 // 비밀번호 정규식 체크하고 안되면 알림
                 // 비밀번호 확인 정규식 체크하고 안되면 알림
@@ -176,51 +183,41 @@ String checkEmail ="\"" + request.getParameter("checkEmail")+"\"" ;
                 const team = document.querySelector('input[name="teamSelect"]:checked');
                 const rank = document.querySelector('input[name="rankSelect"]:checked');
 
-
                 try{
-                  if(!nameRegex.test(nameValue))
-                  {
+                  if(!nameRegex.test(nameValue)){
                     throw "이름은 한글 또는 영어로 1글자 이상 10자 이하로 입력해주세요.";
                   }
-                  if(!passwordRegex.test(passwordValue))
-                  {
+                  if(!passwordRegex.test(passwordValue)){
                     throw "비밀번호는 영문 또는 숫자 1자 이상 20자 이하로 입력해주세요.";
                   }
-                  if(!passwordCheckRegex.test(passwordCheckValue))
-                  {
+                  if(!passwordCheckRegex.test(passwordCheckValue)){
                     throw "비밀번호는 영문 또는 숫자 1자 이상 20자 이하로 입력해주세요.";                    
                   }
-                  if(passwordValue != passwordCheckValue)
-                  {
+                  if(passwordValue != passwordCheckValue){
                     throw "비밀번호가 일치하지 않습니다."
                   }
-                  if(team === null || rank === null)
-                  {
+                  if(team === null || rank === null){
                     throw "부서와 직급을 올바르게 선택해주세요.";
                   }
-                  if(team.value != "team1" && team.value != "team2")
-                  {
+                  if(team.value != "기획팀" && team.value != "디자인팀"){
                     throw "부서를 올바르게 선택해주세요"
                   }
-                  if(rank.value != "rank1" && rank.value != "rank2")
-                  {
+                  if(rank.value != "팀장" && rank.value != "팀원"){
                     throw "직급을 올바르게 선택해주세요"
                   }
 
-                  
                   // alert(id+" "+email+" "+nameValue+" "+ team.value+"로 회원가입 하기");
                   document.getElementById('signupForm').action = "./signupAction.jsp";
                   document.getElementById('signupForm').submit();
                   
-                }catch(e)
-                {
+                }catch(e){
                   alert(e);
                 }
 
           }else {
                 alert('id와 이메일 중복확인을 해주세요')
           }
-
+          
           return;
         }
 

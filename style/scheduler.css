@@ -103,6 +103,17 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+#createModalContent {
+  background-color: var(--light-blue);
+  position: fixed;
+  top: 250px;
+  margin-left: 20%;
+  padding: 35px;
+  border: 2px solid black;
+  width: 60%;
+  height: 560px;
+}
+
 .modalContent {
   background-color: var(--light-blue);
   /* position: fixed; */
