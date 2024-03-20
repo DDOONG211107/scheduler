@@ -2,6 +2,8 @@
 <% 
     request.setCharacterEncoding("utf-8"); 
 
+    
+
     String id = "\""+ request.getParameter("id") +"\"";
     String email = "\"" + request.getParameter("email")+"\"";
     String checkId = "\"" +request.getParameter("checkId")+"\"" ;

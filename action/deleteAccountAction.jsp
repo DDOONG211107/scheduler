@@ -8,19 +8,23 @@
 <%
     request.setCharacterEncoding("utf-8"); 
 
-    String userIdx =  (String) session.getAttribute("userIdx");
+    try{
+        String userIdx =  (String) session.getAttribute("userIdx");
 
-    Class.forName("com.mysql.jdbc.Driver");
-    Connection connect  = DriverManager.getConnection("jdbc:mysql://localhost:3306/scheduler","scheduler_admin","password");
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection connect  = DriverManager.getConnection("jdbc:mysql://localhost:3306/scheduler","scheduler_admin","password");
 
-    String sql = "Delete FROM account WHERE idx = ?";
-    PreparedStatement query = connect.prepareStatement(sql);
-    query.setString(1,userIdx);
+        String sql = "Delete FROM account WHERE idx = ?";
+        PreparedStatement query = connect.prepareStatement(sql);
+        query.setString(1,userIdx);
 
-    query.executeUpdate();
+        query.executeUpdate();
 
-    session.removeAttribute("userIdx");
-    response.sendRedirect("../index.html");
+        session.removeAttribute("userIdx");
+        response.sendRedirect("../index.html");
+    }catch(Exception e){
+        alertString = e.getMessage();
+    }
 
 %>
 

@@ -2,6 +2,7 @@
 <%@ page import="java.util.ArrayList" %>
 <% 
     request.setCharacterEncoding("utf-8"); 
+    String userIdx =  ((String) session.getAttribute("userIdx"));
 
     String year = request.getParameter("year");
     String month = request.getParameter("month");
@@ -15,6 +16,12 @@
 %>
 
 <script>
+    const userIdx = <%=userIdx%>;
+    if(!userIdx){
+        alert("로그인 후 이용해주세요");
+        window.location.href = "../index.html";
+    }
+
     const year = <%=year%>;
     const month = <%=month%>;
     const date = <%=date%>;

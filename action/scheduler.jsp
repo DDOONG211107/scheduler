@@ -148,6 +148,10 @@
         ]
 
         const userIdx = "<%=userIdx%>";
+        if(userIdx == "null"){
+            alert("로그인 후 이용해주세요.");
+            window.location.href = "../index.html";
+        }
         console.log('확인용 세션 출력: ',  userIdx);
 
         const dateNumArr = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -305,7 +309,7 @@
                 document.getElementById('descMonth').value = monthValue;
                 document.getElementById('descDate').value = dateValue;
 
-                document.getElementById('createScheduleForm').action = "./createScheduleForm.jsp";
+                document.getElementById('createScheduleForm').action = "./createScheduleAction.jsp";
                 document.getElementById('createScheduleForm').submit();
 
             }catch(e){
