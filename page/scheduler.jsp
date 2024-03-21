@@ -9,12 +9,109 @@
 <%
     request.setCharacterEncoding("utf-8"); 
 
+    boolean isError = true;
+
     String userIdx =  ((String) session.getAttribute("userIdx")) ;
 
     // 현재 연도와 월이 그대로 출력됨
     String yearValue = request.getParameter("year");
     String monthValue = request.getParameter("month");
     String dateValue = request.getParameter("date");
+    String alertString = "";
+
+    ArrayList<ArrayList<String>> scheduleList = new ArrayList<ArrayList<String>>();
+
+
+    try{
+
+        // 1. 내 userIdx로 내가 팀장인지 아닌지, 나의 팀을 가져온다.
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection connect  = DriverManager.getConnection("jdbc:mysql://localhost:3306/scheduler","scheduler_admin","password");
+
+        String sql = "SELECT * FROM account WHERE idx = ?";
+        PreparedStatement query = connect.prepareStatement(sql);
+        query.setString(1,userIdx);
+
+        ResultSet result = query.executeQuery();
+
+        if(!result.next()){
+            throw new Exception("로그인 후 이용해주세요.");
+        }
+
+        ArrayList<String> account = new ArrayList<String>();
+        String rank = result.getString(8);
+        String team = result.getString(7);
+
+        // 2-1. 내가 팀장이면 전부 조인시켜서 우리팀의 스케줄, 해당 월에 일치하는 스케줄을 전부 가져온다.
+        if(rank.equals("팀장")){
+            sql = "SELECT schedule.idx, schedule.start_datetime, schedule.account_idx, account.team FROM schedule JOIN account WHERE account.idx = schedule.account_idx AND account.team = ? AND YEAR(start_datetime) = ? AND MONTH(start_datetime) = ?";
+            query = connect.prepareStatement(sql);
+            query.setString(1,team);
+            query.setString(2,yearValue);
+            query.setString(3,monthValue);
+
+            // result를 이제 2차원 배열로 만들기
+            result = query.executeQuery();
+
+            while(result.next()){
+                ArrayList<String> data = new ArrayList<String>();
+
+                String idx = result.getString(1);
+                String start_datetime = result.getString(2);
+                String account_idx = result.getString(3);
+
+                data.add("\"" + idx + "\"");
+                data.add("\"" + start_datetime + "\"");
+                data.add("\"" + account_idx + "\"");
+
+                scheduleList.add(data);
+            }
+
+            isError = false;
+        }
+
+        // 2-2. 내가 팀원이면 조인 시킬 필요 없이 스케줄테이블에서 해당 월에 일치하는 내 스케줄을 가져온다.
+        else if(rank.equals("팀원")){
+            sql = "SELECT idx, start_datetime, account_idx FROM schedule WHERE account_idx = ? AND YEAR(start_datetime) = ? AND MONTH(start_datetime) = ? ";
+            query = connect.prepareStatement(sql);
+            query.setString(1,userIdx);
+            query.setString(2,yearValue);
+            query.setString(3,monthValue);
+
+            // result를 이제 2차원 배열로 만들기
+            result = query.executeQuery();
+
+            while(result.next()){
+                ArrayList<String> data = new ArrayList<String>();
+
+                String idx = result.getString(1);
+                String start_datetime = result.getString(2);
+                String account_idx = result.getString(3);
+
+                data.add("\"" + idx + "\"");
+                data.add("\"" + start_datetime + "\"");
+                data.add("\"" + account_idx + "\"");
+
+                scheduleList.add(data);
+            }
+
+            isError = false;
+
+        }
+
+        // 내가 팀장도 아니고 팀원도 아니면 문제가 있는것
+        else{
+            throw new Exception("서버: 문제가 생겼습니다.");
+        }
+
+
+
+
+
+        // 3. 그러면 2차원 배열이 나온다. 그걸 그냥 넘겨버리자.
+    }catch(Exception e){
+        alertString = e.getMessage();    
+    }
 
 %>
 
@@ -169,6 +266,10 @@
                 month.innerText = i;
                 month.className = "monthBtn";
                 month.setAttribute("onclick", "changeMonthEvent(event)");
+                if(i == monthValue){
+                    month.style.backgroundColor = "#bdd4ff";
+                    month.style.color = "black";
+                }
                 monthDiv.appendChild(month);
             }   
         }
@@ -187,10 +288,31 @@
             }
         }
 
-        function setSchedule() {
+        function getScheduleNum(){
+            const scheduleNumList = <%=scheduleList%>;
+            const scheduleNumArr = Array.from({length:31}, () => 0);
+            let start_datetime = "";
+            let dateParts = "";
+            let date = "";
+            let dateValue = 0;
+
+            for(let i=0; i<scheduleNumList.length; i++){
+                start_datetime = scheduleNumList[i][1];
+                dateParts = start_datetime.split("-");
+                date = dateParts[2].split(" ")[0];
+                dateValue = parseInt(date) - 1;
+                scheduleNumArr[dateValue]++;
+            }
+
+            console.log(scheduleNumArr);
+            return scheduleNumArr;
+        }
+
+        function setSchedule(scheduleNumArr) {
             const month = monthValue;
-            const schedule = scheduleNumArr[month-1];
-            for(let i=0;i<schedule.length;i++) {
+            // const schedule = scheduleNumArr[month-1];
+            const schedule = scheduleNumArr;
+            for(let i=0;i<dateNumArr[month];i++) {
                 if(schedule[i] == 0){
                     continue;
                 } else {
@@ -270,7 +392,7 @@
             // 1. 빈칸 예외처리 해주기 (정규식으로)
             const yearRegex = /^\d{4}$/;
             const monthRegex = /^[1-9]|1[0-2]$/;
-            const hourRegex = /^0[1-9]|[1][0-9]|[2][0-3]$/;
+            const hourRegex = /^[0-9]|[1][0-9]|[2][0-3]$/;
             const minuteRegex = /^[0-9]|[12345][0-9]$/;
             const contentRegex = /^.{1,20}$/;
 
@@ -329,7 +451,8 @@
             
         createMonthBtns();
         createDateBtns(monthValue);
-        setSchedule();
+        const scheduleList = getScheduleNum();
+        setSchedule(scheduleList);
         setToday();
 
     </script>
